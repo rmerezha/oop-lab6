@@ -4,9 +4,7 @@ import org.apache.commons.math3.linear.LUDecomposition;
 import org.apache.commons.math3.linear.MatrixUtils;
 import org.apache.commons.math3.linear.RealMatrix;
 
-import java.util.Arrays;
 import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 public class MatrixManager {
 

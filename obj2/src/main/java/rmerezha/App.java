@@ -38,7 +38,7 @@ public class App extends Application {
         textArea.setStyle("-fx-font-size: 20px;");
 
 
-        Scene scene = new Scene(textArea, 800, 800);
+        Scene scene = new Scene(textArea, 400, 400);
 
         primaryStage.setOnCloseRequest(event -> {
             try {

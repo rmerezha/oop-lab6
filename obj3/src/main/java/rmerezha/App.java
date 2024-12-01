@@ -5,10 +5,10 @@ import javafx.application.Platform;
 import javafx.scene.Scene;
 import javafx.scene.control.TextArea;
 import javafx.stage.Stage;
-import org.apache.commons.math3.linear.MatrixUtils;
 
-import java.awt.datatransfer.Clipboard;
-import java.io.*;
+import java.io.BufferedWriter;
+import java.io.IOException;
+import java.io.OutputStreamWriter;
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.concurrent.ExecutorService;
@@ -37,7 +37,7 @@ public class App extends Application {
         textArea.setWrapText(false);
         textArea.setStyle("-fx-font-size: 20px;");
 
-        Scene scene = new Scene(textArea, 800, 800);
+        Scene scene = new Scene(textArea, 400, 400);
 
         primaryStage.setOnCloseRequest(event -> {
             try {
@@ -51,11 +51,7 @@ public class App extends Application {
         primaryStage.setTitle("obj3");
         primaryStage.setScene(scene);
         primaryStage.show();
-//        ClipboardReader.readEvent((textMatrix) -> {
-//            var matrix = MatrixManager.parseMatrix(textMatrix);
-//            double determinant = MatrixManager.getDeterminant(matrix);
-//            textArea.setText(determinant + "");
-//        });
+
     }
 
     private void startSocketServer(TextArea textArea) {
@@ -82,7 +78,7 @@ public class App extends Application {
                 if (textMatrix.isEmpty()) return;
                 var matrix = MatrixManager.parseMatrix(textMatrix);
                 double determinant = MatrixManager.getDeterminant(matrix);
-                textArea.setText(determinant + "");
+                textArea.setText("Determinant: " + determinant);
             });
 
 

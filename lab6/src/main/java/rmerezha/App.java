@@ -12,7 +12,6 @@ import javafx.stage.Stage;
 
 import java.io.*;
 import java.net.Socket;
-import java.net.UnknownHostException;
 
 public class App extends Application {
 
@@ -108,14 +107,19 @@ public class App extends Application {
         int portObj3 = 3333;
 
         var newProc2 = startProcessIfNotRunning("/home/rmerezha/oop-lab6/obj2/target/obj2-1.0-SNAPSHOT-shaded.jar", portObj2);
+        if (newProc2 != null) {
+            proc2 = newProc2;
+        }
         String response = communicateWithService(portObj2, String.format("%d %d %d", n, min, max));
         if (response == null || !response.startsWith("0")) {
             resultLabel.setText("Помилка obj2");
             return;
         }
 
-        proc3 = startProcessIfNotRunning("/home/rmerezha/oop-lab6/obj3/target/obj3-1.0-SNAPSHOT-shaded.jar", portObj3);
-
+        var newProc3 = startProcessIfNotRunning("/home/rmerezha/oop-lab6/obj3/target/obj3-1.0-SNAPSHOT-shaded.jar", portObj3);
+        if (newProc3 != null) {
+            proc3 = newProc3;
+        }
         String responseObj3 = communicateWithService(portObj3, "SIGNAL");
         if (responseObj3 == null) {
             resultLabel.setText("Помилка при підключенні або обміні даними [obj3]");
